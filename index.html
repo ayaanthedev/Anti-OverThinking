@@ -4,119 +4,7 @@
 <meta charset="UTF-8">
 <title>Anti-Overthinking</title>
 
-<style>
-:root {
-  --bg: #000000;
-  --card: #0d0d0d;
-  --text: #ffffff;
-  --muted: #a3a3a3;
-  --border: #262626;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: Inter, Arial, sans-serif;
-}
-
-body {
-  margin: 0;
-  height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card {
-  width: 90%;
-  max-width: 420px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  text-align: center;
-}
-
-.screen {
-  display: none;
-}
-
-.screen.active {
-  display: block;
-}
-
-h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 14px;
-  color: var(--muted);
-}
-
-input {
-  width: 100%;
-  margin-top: 20px;
-  padding: 14px;
-  background: #000;
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
-}
-
-input::placeholder {
-  color: #737373;
-}
-
-button {
-  margin-top: 18px;
-  padding: 12px;
-  width: 100%;
-  background: #ffffff;
-  color: #000000;
-  border: none;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-.row {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.yes, .no {
-  flex: 1;
-}
-
-.yes {
-  background: #ffffff;
-  color: #000000;
-}
-
-.no {
-  background: #000000;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-}
-
-.message {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.5;
-  white-space: pre-line;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -147,34 +35,7 @@ button:hover {
 
 </div>
 
-<script>
-const thought = document.getElementById("thought");
-
-thought.addEventListener("keydown", e => {
-  if (e.key === "Enter") next();
-});
-
-function next() {
-  if (!thought.value.trim()) return;
-  swap("s1", "s2");
-}
-
-function yes() {
-  document.getElementById("msg").innerText =
-    "STOP THINKING.\nDO IT.\nACTIONS SPEAK LOUDER THAN WORDS.";
-  swap("s2", "s3");
-}
-
-function no() {
-  document.getElementById("msg").innerText = "LET IT GO.";
-  swap("s2", "s3");
-}
-
-function swap(a, b) {
-  document.getElementById(a).classList.remove("active");
-  document.getElementById(b).classList.add("active");
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
