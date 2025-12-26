@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anti-Overthinking Prototype</title>
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background: #0b1220;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .screen {
+        display: none;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .active {
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        margin-bottom: 15px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    .primary {
+        background: #1e90ff;
+        color: white;
+    }
+
+    .yes {
+        background: #22c55e;
+        color: black;
+    }
+
+    .no {
+        background: #ef4444;
+        color: white;
+    }
+
+    .message {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
+        line-height: 1.4;
+    }
+</style>
+</head>
+<body>
+
+<!-- Screen 1 -->
+<div class="screen active" id="screen1">
+    <h2>Enter the thought</h2>
+    <input type="text" id="thoughtInput" placeholder="Type your thought..." />
+    <button class="primary" onclick="goNext()">Enter</button>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen" id="screen2">
+    <h2>Can you control it?</h2>
+    <button class="yes" onclick="showYes()">YES</button>
+    <button class="no" onclick="showNo()">NO</button>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen" id="screen3">
+    <div class="message" id="finalMessage"></div>
+</div>
+
+<script>
+    const input = document.getElementById("thoughtInput");
+
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            goNext();
+        }
+    });
+
+    function goNext() {
+        if (input.value.trim() === "") return;
+        switchScreen("screen1", "screen2");
+    }
+
+    function showYes() {
+        document.getElementById("finalMessage").innerText =
+            "THEN STOP THINKING.\nDO IT.\nACTIONS SPEAK LOUDER THAN WORDS.";
+        switchScreen("screen2", "screen3");
+    }
+
+    function showNo() {
+        document.getElementById("finalMessage").innerText =
+            "LET IT GO.";
+        switchScreen("screen2", "screen3");
+    }
+
+    function switchScreen(current, next) {
+        document.getElementById(current).classList.remove("active");
+        document.getElementById(next).classList.add("active");
+    }
+</script>
+
+</body>
+</html>
