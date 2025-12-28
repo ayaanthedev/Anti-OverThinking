@@ -22,11 +22,6 @@ You write the thought once, then answer one question:
 
 ---
 
-## Why I made this
-I overthink a lot.  
-Thinking more doesn’t always help, so I made this to force myself to decide instead of looping.
-
----
 
 ## Tech used
 - HTML  
